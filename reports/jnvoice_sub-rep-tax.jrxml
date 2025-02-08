@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final utlizzo versione della libreria JasperReports6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jnvoice_sub-rep-tax" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="5" uuid="2b850c70-afee-4950-bce2-71def2731edd">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MSSQL Dental Service"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="RecordID" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select taxSummary.TaxCode,
+taxSummary.TaxableAmount,
+taxSummary.TaxAmount,
+taxSummary.TotalAmount,
+taxCodes.Description as taxDescription 
+from MA_SaleDocTaxSummary taxSummary inner join MA_TaxCodes taxCodes ON
+taxSummary.TaxCode = taxCodes.TaxCode
+where taxSummary.saledocid = $P{RecordID}]]>
+	</queryString>
+	<field name="TaxCode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TaxCode"/>
+		<property name="com.jaspersoft.studio.field.label" value="TaxCode"/>
+	</field>
+	<field name="TaxableAmount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="TaxableAmount"/>
+		<property name="com.jaspersoft.studio.field.label" value="TaxableAmount"/>
+	</field>
+	<field name="TaxAmount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="TaxAmount"/>
+		<property name="com.jaspersoft.studio.field.label" value="TaxAmount"/>
+	</field>
+	<field name="TotalAmount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="TotalAmount"/>
+		<property name="com.jaspersoft.studio.field.label" value="TotalAmount"/>
+	</field>
+	<field name="taxDescription" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="taxDescription"/>
+		<property name="com.jaspersoft.studio.field.label" value="taxDescription"/>
+	</field>
+	<background>
+		<band height="44" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<line>
+				<reportElement x="27" y="0" width="1" height="44" uuid="fb2a58ef-2ea5-4155-9fba-38766e19aecb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="220" y="0" width="1" height="44" uuid="b847ef4c-d558-4d1b-8ead-233b48339ed0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="325" y="0" width="1" height="44" uuid="53682d11-53b7-4fb1-bab7-e403f6f59b3b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="430" y="0" width="1" height="44" uuid="ee9b12f1-71f9-45f4-8556-bc1d48a40ecf">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</background>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<staticText>
+				<reportElement x="0" y="0" width="10" height="18" uuid="1f282efa-f1a7-4452-b886-7e77ed68992c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="0" width="28" height="18" uuid="0ee061ee-596c-4636-806e-e57b32147c9c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{TaxCode}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="32" y="0" width="193" height="18" uuid="22c01e13-e6b5-4724-90a1-dd77c6beb0c3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="0">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{taxDescription}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="231" y="0" width="90" height="18" uuid="632560f7-c11f-469d-87ed-f2df732d19ff">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="0">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{TaxableAmount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="336" y="0" width="90" height="18" uuid="a17f21f6-0209-4c02-b06f-c482a4c3083c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="0">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{TaxAmount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="441" y="0" width="90" height="18" uuid="becfeab9-14a0-456f-8929-e8c06b3834cb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="0">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{TotalAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

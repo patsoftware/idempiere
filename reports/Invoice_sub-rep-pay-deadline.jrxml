@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final utlizzo versione della libreria JasperReports6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Invoice_sub-rep-pay-deadline" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="5" bottomMargin="0" uuid="0ef2ffe8-a6ad-4b43-9174-ec9570d1bf22">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MSSQL Dental Service"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="RecordID" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select  saleDocPaySched.DueDate, saleDocPaySched.InstallmentAmount + saleDocPaySched.InstallmentTaxAmount as PaySchedAmount 
+from MA_SaleDocPymtSched saleDocPaySched
+inner join MA_SaleDoc saleDoc on saleDocPaySched.SaleDocId = saleDoc.SaleDocId
+where saleDocPaySched.SaleDocId = $P{RecordID}]]>
+	</queryString>
+	<field name="DueDate" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="DueDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="DueDate"/>
+	</field>
+	<field name="PaySchedAmount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="PaySchedAmount"/>
+		<property name="com.jaspersoft.studio.field.label" value="PaySchedAmount"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="4" y="2" width="76" height="16" uuid="0a8071d6-b257-4933-b246-c3b72493f353"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Scadenze:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="4" y="0" width="76" height="18" uuid="b920ba2a-dd18-448b-a2a5-3a7d9050f226">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="0">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{PaySchedAmount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="87" y="0" width="11" height="18" uuid="7581355f-d96b-4df8-8d2e-995757b540dc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[al]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="101" y="0" width="60" height="18" uuid="e3368428-4b94-4997-9cc7-4397d4a506e9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="0">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{DueDate})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
